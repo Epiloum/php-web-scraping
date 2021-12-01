@@ -1,4 +1,7 @@
 <?php
+# composer require guzzlehttp/guzzle
+# composer require symfony/dom-crawler
+# composer require symfony/css-selector
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
