@@ -2,11 +2,16 @@ require 'net/http'
 require 'nokogiri'
 
 def scrapWebpage(url, selector)
+  res = []
+
   html = Net::HTTP.get(URI(url))
-  doc = Nokogiri::HTML(html)
-  return doc.css(selector).text
+  Nokogiri::HTML(html).css(selector).each do |v|
+    res.push(v.text)
+  end
+
+  return res
 end
 
-url = 'https://dev.epiloum.net/1926'
-selector = 'h1.site-title a'
+url = 'https://dev.epiloum.net'
+selector = '.blog-feed-category'
 puts scrapWebpage(url, selector)
